@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice Work1</title>
+    <style>
+        body{
+            display: grid;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        h1{
+            text-align: center;
+        }
+
+        section{
+            display: flex;
+            color: white;
+        }
+
+        section div{
+            background-color: black;
+            height: 70vh;
+            margin-left: 10px;
+            padding: 25px;
+        }
+
+        ol li{
+            margin-bottom: 10px;
+
+        }
+
+        /* BONUS */
+        /* ADD STYLE TO YOUR WORK */
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>NAME OF STUDENTS PER CLASS</h1>
+    </header>
+    <section>
+        <div>
+            <h3>Grade 10</h3>
+            <ol id="grade-10">
+                <!-- TODO 4 -->
+                <!-- YOUR LIST ITEMS GO HERE -->
+                
+                
+            </ol>
+        </div>
+
+        <div>
+            <h3>Grade 11</h3>
+            <ol id="grade-11">
+                <!-- TODO 5 -->
+                <!-- YOUR LIST ITEMS GO HERE -->
+            </ol>
+        </div>
+
+        <div>
+            <h3>Grade 12</h3>
+            <ol id="grade-12">
+                <!-- TODO 6 -->
+                <!-- YOUR LIST ITEMS GO HERE -->
+            </ol>
+        </div>
+    </section>
+
+    <script>
+         let grade10 = document.getElementById('grade-10');
+         let grade11 = document.getElementById('grade-11');
+         let grade12 = document.getElementById('grade-12');
+        // TODO 3
+        // MAKE A GET REQUEST HERE AND DISPLAY THE RESPONSE IN THE LIST ELEMENTS ABOVE
+        fetch('/names')
+        .then(res => res.json())
+        .then((data) =>{
+            let all_classes = data;
+         
+
+            function displayGrade10Data(){
+               let grade_ten_students = all_classes["10th grade"];
+        
+               
+               for(let i = 0; i < grade_ten_students.length; i++){
+                   var li = document.createElement('li');
+                   var li_text = document.createTextNode(grade_ten_students[i]);
+                   li.appendChild(li_text);
+                   grade10.appendChild(li);
+               }
+            }
+            function displayGrade11Data(){
+               let grade_eleven_students = all_classes["11th grade"];
+
+               for(let i = 0; i < grade_eleven_students.length; i++){
+                var li = document.createElement('li');
+                   var li_text = document.createTextNode(grade_eleven_students[i]);
+                   li.appendChild(li_text);
+                   grade11.appendChild(li);
+               }
+            }
+
+            function displayGrade12Data(){
+                let grade_twelve_students = all_classes["11th grade"];
+                for(i=0; i < grade_twelve_students.length; i++){
+                    var li = document.createElement('li');
+                    var list_text = document.createTextNode(grade_twelve_students[i]);
+                    li.appendChild(list_text);
+                    grade12.appendChild(li);
+                }
+            }
+            displayGrade10Data();
+            displayGrade11Data();
+            displayGrade12Data();
+            
+        })
+        .catch(err =>{
+            console.log(err);
+        })
+
+       
+    </script>
+</body>
+</html>
