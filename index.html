@@ -47,7 +47,6 @@
       
             section {
               display: flex;
-              flex-shrink: ;
               color: #352921;
               width: 100%;
             }
@@ -119,7 +118,7 @@
         fetch('/names')
         .then(res => res.json())
         .then((data) =>{
-            let all_classes = data;
+            let all_classes = JSON.parse(data);
          
 
             function displayGrade10Data(){

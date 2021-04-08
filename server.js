@@ -10,9 +10,9 @@ const server = http.createServer((req, res) => {
                 console.log(err)
                 res.end();
             }
-            else{
+            
                 res.end(data);
-            }
+            
         })
       
     }else if(req.url === "/names"){
@@ -23,9 +23,9 @@ const server = http.createServer((req, res) => {
                 console.log(err);
                 res.end();
             }
-            else{
-                res.end(data);
-            }
+            
+                res.end(JSON.stringify(data));
+            
         })
 
     }else{
